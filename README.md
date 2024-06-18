@@ -62,7 +62,7 @@ curl -d  "{\"name\": \"JohnDoe\",\"password\": \"password12\",\"email\": \"johnd
 
 
 9. Fetch API
-curl -v http://localhost:8081/api/user/fetch?username=John%20%Doe
+curl -v http://localhost:8081/api/user/fetch?username=JohnDoe
 
 Note that curl does not allow spaces. If you used space in the user name pls replace the space with %20. 
 For example, if you used "Alex Doe", in curl, pls use "Alex%20Doe"
