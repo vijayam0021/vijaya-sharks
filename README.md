@@ -26,18 +26,45 @@ Installation instructions
 
 To Run the Application
 -----------------------
-1. The source code is located at a public repository on github at:
-2. Clone the repository and compile the sources
-3. Use command below to run the application from command line. If has successfully launched, you will see the line <b>Hello!</b> printed on the console
+1. The source code is located at a public repository on github at: https://github.com/vijayam0021/vijaya-sharks
+2. Clone the repository and unzip the sources to a folder
+3. Use the instructions in the section below titled "To test the API" to run the application from command line. If has successfully launched, you will see the line Hello!</b> printed on the console
 
 To test the API
 ---------------
-Assuming the application is running on localhost at port 8081, use the following commands to test the API. 
+Assuming the application is running on localhost at port 8081, use the following commands to run the application and test the API. 
+Note
+* User Registration API: The user registration uses the BCryptPasswordEncoder to encode the password before storing to the database. The BCryptPasswordEncoder stores the salt along with the encrypted password to the database.
+* Fetch User API: The fetch user API does not return the password for security purposes.
 
-User Registration API
+1. Navigate to the directory where the sources are located. For example, if you have cloned and unzipped the repository to c:\Dev, navigate to c:\Dev\userlist
 
-The user registration uses the BCryptPasswordEncoder to encode the password before storing to the database. The BCryptPasswordEncoder stores the salt along with the encrypted password to the database.
+2. Use command 
+     mvn clean install
+3. On successul completion of Step #2, the application jar will be created at target folder located within the folder where you ran #2. For example, if you ran the command in step 
+#2 at C:\Dev\userlist, the jar will be located at C:\Dev\userlist\target. The name of the jar is userlist-0.0.1-SNAPSHOT.jar. 
 
-Fetch User API
+4. Navigate to the folder named target
 
-The fetch user API does not return the password for security purposes. 
+5. Use java -jar command with the jar name to run the application 
+     java -jar userlist-0.0.1-SNAPSHOT.jar
+
+6. On succesfully completion of command in step #5, you will see Spring Boot logo and various starup logs. You will also see the following line 
+Hello !
+
+7. To test the API, in another command prompt, use the following curl commands to test the API. Alternatively, POSTMAN can also be used to quickly test the API
+
+8. Register user
+curl -d  '{"name": "JohnDoe","password": "password12","email": "johndoe@jd.com"}' -H 'Content-Type: application/json' http://localhost:8081/api/user/register
+
+If you are running from a windows prompt, the request must be as follows
+curl -d  "{\"name\": \"JohnDoe\",\"password\": \"password12\",\"email\": \"johndoe@jd.com\"}" -H "Content-Type: application/json" http://localhost:8081/api/user/register
+
+
+9. Fetch API
+curl -v http://localhost:8081/api/user/fetch?username=John%20%Doe
+
+Note that curl does not allow spaces. If you used space in the user name pls replace the space with %20. 
+For example, if you used "Alex Doe", in curl, pls use "Alex%20Doe"
+
+  
