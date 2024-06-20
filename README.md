@@ -1,6 +1,5 @@
 "# vijaya-sharks" 
-
-Makersharks Assessment - Details
+User Registration - Details
 ---------------------------------
 The assigment to create a user registration and user details fetch API has been implemented in Spring Boot using MySQL database. 
 I have implemented very basic security (allow all requests). The ideal way to implement this would be as follows:
